@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+</body>
+<script>
+    (function(w,d){
+        function inputIdentify(inputId){
+            this._init(inputId);
+            this._effect();
+        }
+        inputIdentify.prototype._init = function(inputId){
+            var inputObject = d.getElementByTd(inputId);
+            this.inputObject = inputObject;
+        }
+        inputIdentify.prototype._effect = function(){
+            this.inputObject.onblur = function(){
+                alert("失去焦点");
+            }
+            this.inputObject.onfocus = function(){
+                alert("获得焦点");
+            }
+        }
+        
+    })(window,document)
+    var input1 = new inputIdentify("username");
+
+    //forEach() 方法对数组的每个元素执行一次提供的函数。
+    var array1 = ['a', 'b', 'c'];
+    /*
+        forEach(callback,thisArg)
+        callback(element,index,arr)
+            element遍历数组每次取到的数组元素值
+            index遍历数组每次渠道的数组元素的索引
+            arr操作的数组
+        thisArg可以指明回调函数内部this的指向
+    */
+    array1.forEach(function(element,index,arr2) {
+    console.log(element,index,arr2);
+    window.x = 10
+    },window)
+
+    //every() 方法测试数组的所有元素是否都通过了指定函数的测试
+    var arr3 = [10,20,30,40];
+    var result = arr3.every(function(value){
+        return value>5;//true
+    });
+    console.log(result);
+
+    //map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+    var arr4 = [1,2,3];
+    var arr5 = arr4.map(function(element){
+        return element*2;
+    })
+    console.log(arr5);
+</script>
+</html>

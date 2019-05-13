@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        JSON.stringify(js对象)
+        可以将js对象数组、结构转化为json字符串
+    */
+    var jsObject = {
+        "username" : "zhangsan",
+        "age" : 20,
+        "address" : {"add":"石家庄","addcode":"11322"}
+    }
+    //对属性或属性值进行过滤
+    var jsonStr = JSON.stringify(jsObject,function(k,v){
+        if(typeof v === "number"){
+            return undefined;
+        }
+        return v;
+    });
+    //console.log(jsonStr);
+    //console.log(typeof jsonStr);
+    
+    //输出方式：从里到外
+    //输出顺序：从左到右，从里到外，最后输出总的对象
+    var jsObject2 = JSON.parse(jsonStr,function(k,v){
+        console.log(k,v);
+    });
+    //console.log(jsObject2);
+    //console.log(typeof jsObject2);
+</script>
+</html>
